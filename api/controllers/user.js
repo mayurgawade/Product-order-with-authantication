@@ -1,5 +1,5 @@
 const User = require('../models/user')
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 exports.user_create_user = (req, res, next) => {
@@ -12,17 +12,16 @@ exports.user_create_user = (req, res, next) => {
                     message : "email already exist"
                 })
             } else {
-                // bcrypt.hash(req.body.password, 10, (err, hash) => {
-                //     if(err) {
-                //         return res.status(500).json({
-                //             error: err
-                //         })
-                //     } else {
+                bcrypt.hash(req.body.password, 10, (err, hash) => {
+                    if(err) {
+                        return res.status(500).json({
+                            error: err
+                        })
+                    } else {
                         const user = new User({
                             _id : new mongoose.Types.ObjectId(),
                             email : req.body.email,
-                            // password : hash
-                            password : req.body.password
+                            password : hash
                         })
                     user.save()
                     .then( result => {
@@ -39,8 +38,8 @@ exports.user_create_user = (req, res, next) => {
                             })
                         }
                     )
-                // }
-                // })
+                }
+                })
             }
         }
     )
