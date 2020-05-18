@@ -20,8 +20,3 @@ NPM version requirement: v5.6.0
  
  $ npm start
  
- 
- - import the postman collection and Enjoy
- 
- - Use the following postman Collection:--
- https://drive.google.com/file/d/1S5cZlsGbhTYgWB6O_SViuCnV-bUQnbKI/view?usp=sharing
