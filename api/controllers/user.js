@@ -61,13 +61,13 @@ exports.user_login = (req, res, next) => {
                     message : 'Authantication Failed'
                 })
             } 
-            // bcrypt.compare(req.body.password, user[0].password, (err, result) => {
-            //     if(err){
-            //         return res.status(401).json({
-            //             message : 'Authantication Failed'
-            //         })
-            //     } 
-            //     if (result){;
+            bcrypt.compare(req.body.password, user[0].password, (err, result) => {
+                if(err){
+                    return res.status(401).json({
+                        message : 'Authantication Failed'
+                    })
+                } 
+                if (result){
                     const token = jwt.sign(
                     {
                         email: user[0].email,
@@ -82,11 +82,11 @@ exports.user_login = (req, res, next) => {
                         message : 'Authantication Successful',
                          token : token
                     })
-            //   }
-            //     res.status(401).json({
-            //         message : 'Authantication Failed'
-            //     })
-            //  })
+              }
+                res.status(401).json({
+                    message : 'Authantication Failed'
+                })
+             })
         }
     )
     .catch(
