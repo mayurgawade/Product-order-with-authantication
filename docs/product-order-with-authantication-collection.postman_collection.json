@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"email\":\"mayurgawade1339@gmail.com\",\n\"password\":\"welcome\"\n}"
+							"raw": "{\n\"email\":\"yourEmail@gmail.com\",\n\"password\":\"yourPassword\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3000/user/signup",
@@ -41,6 +41,29 @@
 				},
 				{
 					"name": "login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "34401dc6-13bc-4005-b469-9feca7cda64c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4c8827f8-ea61-434a-b5ed-ce30962c64d0",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", data.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -78,7 +101,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InlvdXJlbWFpbDJAZ21haWwuY29tIiwidXNlcklkIjoiNWRjZWFkM2QxZWU0NjcyOWZkYjdhODJkIiwiaWF0IjoxNTczODI1OTc4LCJleHAiOjE1NzM4Mjk1Nzh9.WPx0VoJBivEseCvYZGOepnabxpdE-pXVexqQsRzB4pI",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -104,7 +127,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:3000/user/5dcead3d1ee46729fdb7a82d",
+							"raw": "http://localhost:3000/user/5ec49e97fc1be805b37d559a",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -112,7 +135,7 @@
 							"port": "3000",
 							"path": [
 								"user",
-								"5dcead3d1ee46729fdb7a82d"
+								"5ec49e97fc1be805b37d559a"
 							]
 						}
 					},
@@ -152,7 +175,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heXVyZ2F3YWRlMTMzOUBnbWFpbC5jb20iLCJ1c2VySWQiOiI1ZWMyOWFhZTg5MjkyZjIyODY0ZWMwMDgiLCJpYXQiOjE1ODk4MTE5MDMsImV4cCI6MTU4OTgxNTUwM30.dhQiXF8x2bf3mmXD0NzXtSwVmGl3kIkD0H75vsMN2IE",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -164,18 +187,18 @@
 							"formdata": [
 								{
 									"key": "productName",
-									"value": "mac",
+									"value": "notebook",
 									"type": "text"
 								},
 								{
 									"key": "productPrice",
-									"value": "100000",
+									"value": "50000",
 									"type": "text"
 								},
 								{
 									"key": "productImage",
 									"type": "file",
-									"src": "/Users/mayurgawde/Desktop/Screenshots/Screenshot 2020-05-18 at 7.58.08 PM.png"
+									"src": "/Users/mayurgawde/Desktop/Screenshots/Screenshot 2020-05-19 at 1.09.33 PM.png"
 								}
 							]
 						},
@@ -200,7 +223,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/products/5dceaf461ee46729fdb7a82e",
+							"raw": "http://localhost:3000/products/5ec49f24fc1be805b37d559b",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -208,7 +231,7 @@
 							"port": "3000",
 							"path": [
 								"products",
-								"5dceaf461ee46729fdb7a82e"
+								"5ec49f24fc1be805b37d559b"
 							]
 						}
 					},
@@ -222,7 +245,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heXVyZ2F3YWRlMTMzOUBnbWFpbC5jb20iLCJ1c2VySWQiOiI1ZWMyOWFhZTg5MjkyZjIyODY0ZWMwMDgiLCJpYXQiOjE1ODk4MTE5MDMsImV4cCI6MTU4OTgxNTUwM30.dhQiXF8x2bf3mmXD0NzXtSwVmGl3kIkD0H75vsMN2IE",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -234,12 +257,48 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n\t{\"propName\" : \"name\", \"value\" : \"macbook pro\"},\n\t{\"propName\" : \"price\", \"value\" : \"12345\"}\n]"
+							"raw": "[\n\t{\"propName\" : \"name\", \"value\" : \"notebook PC\"},\n\t{\"propName\" : \"price\", \"value\" : \"60000\"}\n]"
 						},
+						"url": {
+							"raw": "http://localhost:3000/products/5ec49f24fc1be805b37d559b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"products",
+								"5ec49f24fc1be805b37d559b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteProduct",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
 						"url": {
 							"raw": "http://localhost:3000/products/5ec29bd289292f22864ec00a",
 							"protocol": "http",
@@ -250,26 +309,6 @@
 							"path": [
 								"products",
 								"5ec29bd289292f22864ec00a"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "deleteProduct",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:3000/products/5dceaf461ee46729fdb7a82e",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"products",
-								"5dceaf461ee46729fdb7a82e"
 							]
 						}
 					},
@@ -299,7 +338,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heXVyZ2F3YWRlMTMzOUBnbWFpbC5jb20iLCJ1c2VySWQiOiI1ZWMyOWFhZTg5MjkyZjIyODY0ZWMwMDgiLCJpYXQiOjE1ODk4MTE5MDMsImV4cCI6MTU4OTgxNTUwM30.dhQiXF8x2bf3mmXD0NzXtSwVmGl3kIkD0H75vsMN2IE",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -329,7 +368,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heXVyZ2F3YWRlMTMzOUBnbWFpbC5jb20iLCJ1c2VySWQiOiI1ZWMyOWFhZTg5MjkyZjIyODY0ZWMwMDgiLCJpYXQiOjE1ODk4MTE5MDMsImV4cCI6MTU4OTgxNTUwM30.dhQiXF8x2bf3mmXD0NzXtSwVmGl3kIkD0H75vsMN2IE",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -359,7 +398,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1heXVyZ2F3YWRlMTMzOUBnbWFpbC5jb20iLCJ1c2VySWQiOiI1ZWMyOWFhZTg5MjkyZjIyODY0ZWMwMDgiLCJpYXQiOjE1ODk4MTE5MDMsImV4cCI6MTU4OTgxNTUwM30.dhQiXF8x2bf3mmXD0NzXtSwVmGl3kIkD0H75vsMN2IE",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -375,7 +414,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"productId\": \"5ec29bd289292f22864ec00a\",\n\t\"quantity\": \"2\"\n}"
+							"raw": "{\n\t\"productId\": \"5ec370ccc4c1940745ec123d\",\n\t\"quantity\": \"5\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:3000/orders/",
@@ -400,7 +439,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InlvdXJlbWFpbEBnbWFpbC5jb20iLCJ1c2VySWQiOiI1ZGNlYjEwMjFlZTQ2NzI5ZmRiN2E4MzAiLCJpYXQiOjE1NzM4Mjc2MjgsImV4cCI6MTU3MzgzMTIyOH0.6kwdOqaKtpSYayphV5FQXBNjaPiPkjLDUFctbCEtyA0",
+									"value": "{{token}}",
 									"type": "string"
 								}
 							]
@@ -408,7 +447,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/orders/5da703d9b7070f16e3efaf16",
+							"raw": "http://localhost:3000/orders/5ec49fdafc1be805b37d559c",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -416,7 +455,7 @@
 							"port": "3000",
 							"path": [
 								"orders",
-								"5da703d9b7070f16e3efaf16"
+								"5ec49fdafc1be805b37d559c"
 							]
 						}
 					},
