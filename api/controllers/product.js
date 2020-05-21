@@ -22,16 +22,6 @@ exports.product_get_all_products = (req, res, next) => {
                     })
                     }
         res.status(200).json(result)
-        // if(doc.length > 0) {
-        //     res.status(200).json({
-        //         count: doc.length,
-        //         products: doc
-        //     })
-        // } else {
-        //     res.status(404).json({
-        //         message : "No records present"
-        //     })
-        // }
         
     })
     .catch( err => {
@@ -102,24 +92,9 @@ exports.product_get_product_by_id = (req, res, next) => {
             });
         }
     )
-    /* if(id === 'special') {
-        res.status(200).json({
-            message: 'you selected special id' ,
-            id: id
-        })
-    } else {
-        res.status(200).json({
-            message: 'you selected general Id',
-            id: id
-        })
-    }   */
 }
 exports.product_update_product = (req, res, next) => {
     const id = req.params.productId;
-    /* res.status(200).json({
-        message: 'patch request for products' ,
-        id: id
-    })   */
     const updateOps = {};
     for(const ops of req.body){
         updateOps[ops.propName] = ops.value;
@@ -167,8 +142,4 @@ exports.product_delete_product = (req, res, next) => {
             res.status(500).json(err);
         }
     )
-    /* res.status(200).json({
-        message: 'delete request for products' ,
-        id: id
-    })  */
 }

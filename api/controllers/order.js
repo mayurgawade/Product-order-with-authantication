@@ -35,10 +35,6 @@ exports.orders_get_all = (req, res, next) => {
     )
 }
 exports.orders_create_order = (req, res, next) => {
-    // const order = {
-    //     productId : req.body.productId,
-    //     quantity : req.body.quantity
-    // }
     Product.findById(req.body.productId)
     .then(
         product => {
