@@ -66,7 +66,6 @@ exports.orders_create_order = (req, res, next) => {
             }
         )
         .catch( error => {
-            console.log(error)
             res.status(500).json({
                 error: error
             })

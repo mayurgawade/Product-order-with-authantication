@@ -25,7 +25,6 @@ exports.user_create_user = (req, res, next) => {
                         })
                     user.save()
                     .then( result => {
-                        console.log(result)
                         return res.status(201).json({
                             message: 'User added successfully',
                             userDetails: result

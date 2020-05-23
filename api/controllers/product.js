@@ -31,7 +31,6 @@ exports.product_get_all_products = (req, res, next) => {
     })
 }
 exports.product_create_product = (req, res, next) => {
-    console.log(req.file);
     const product = new Product({
         _id : new mongoose.Types.ObjectId(),
         name : req.body.productName,
@@ -60,13 +59,11 @@ exports.product_create_product = (req, res, next) => {
 }
 exports.product_get_product_by_id = (req, res, next) => {
     const id = req.params.productId;
-    console.log('id', id);
     Product.findById(id)
     .select('name price _id productImage')
     .exec()
     .then(
         doc => {
-            console.log(doc);
             if (doc) {
                 res.status(200).json({
                     doc,
@@ -86,7 +83,6 @@ exports.product_get_product_by_id = (req, res, next) => {
     )
     .catch(
         err => {
-            console.log(err);
             res.status(500).json({
                 error : err
             });
