@@ -1,5 +1,5 @@
-const Product = require('../models/products')
 const mongoose = require('mongoose');
+const Product = require('../models/products')
 
 // PRODUCT : to get all the products - getAPI
 exports.product_get_all_products = (req, res, next) => {

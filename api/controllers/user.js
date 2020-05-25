@@ -1,7 +1,7 @@
-const User = require('../models/user')
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
+const User = require('../models/user')
 
 // USER : to create user - postAPI
 exports.user_create_user = (req, res, next) => {
