@@ -1,7 +1,7 @@
 const express = require('express')
+const multer = require('multer')
 const checkAuth = require('../middleware/check-auth');
 const productController = require('../controllers/product')
-const multer = require('multer')
 
 // to store file into 'uploads/' folder
 const storage = multer.diskStorage({
