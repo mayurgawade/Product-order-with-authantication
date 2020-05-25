@@ -2,6 +2,8 @@ const express = require('express')
 const checkAuth = require('../middleware/check-auth');
 const productController = require('../controllers/product')
 const multer = require('multer')
+
+// to store file into 'uploads/' folder
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, 'uploads/')
@@ -11,6 +13,7 @@ const storage = multer.diskStorage({
     }
 })
 
+// to accept only '.png' and '.jpeg' files
 const fileFilter = (req, file, cb) => {
     if(file.mimetype === 'image/png' || file.mimetype === 'image/jpeg') {
         //accepr the file
@@ -21,6 +24,8 @@ const fileFilter = (req, file, cb) => {
     }
 }
 
+
+//to accept files upto 5 MB
 const upload = multer({ storage : storage,
      limits: {
     fileSize: 1024 * 1024 * 5

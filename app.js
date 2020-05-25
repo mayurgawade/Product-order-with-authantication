@@ -7,12 +7,17 @@ const productRoutes = require('./api/routes/products')
 const orderRoutes = require('./api/routes/orders')
 const userRoutes = require('./api/routes/user')
 
+// to connect with mongoDB Altas 
 mongoose.connect('mongodb+srv://mayur:mayur@node-rest-shop-e3v87.mongodb.net/test?retryWrites=true&w=majority',
 { 
     useNewUrlParser: true,
     useUnifiedTopology: true 
 });
+
+// to show the request logs on console ex: POST /user/login 200 3309.154 ms - 274
 app.use(morgan('dev'))
+
+// to Parse incoming request bodies
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json())
 app.use('/products', productRoutes)

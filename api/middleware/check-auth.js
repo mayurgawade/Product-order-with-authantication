@@ -1,4 +1,6 @@
 const jwt = require('jsonwebtoken')
+
+// Middlaware to Validate JWT Authantication Token
 module.exports = (req, res, next) => {
     try {
         const token = req.headers.authorization.split(" ")[1];

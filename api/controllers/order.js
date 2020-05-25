@@ -2,6 +2,7 @@ const Order = require('../models/order')
 const Product = require('../models/products')
 const mongoose = require('mongoose')
 
+// ORDER : to get all the orders - getAPI
 exports.orders_get_all = (req, res, next) => {
     Order.find()
     .select('quantity _id productId')
@@ -34,6 +35,8 @@ exports.orders_get_all = (req, res, next) => {
         }
     )
 }
+
+// ORDER : to create the order - postAPI
 exports.orders_create_order = (req, res, next) => {
     Product.findById(req.body.productId)
     .then(
@@ -72,6 +75,8 @@ exports.orders_create_order = (req, res, next) => {
         })
         })
 }
+
+// ORDER : to get order by Id - getAPI
 exports.orders_get_order_by_id = (req, res, next) => {
     Order.findById(req.params.orderId)
     .exec()
@@ -99,6 +104,8 @@ exports.orders_get_order_by_id = (req, res, next) => {
         }
     )
 }
+
+// ORDER : to delete perticular order - deleteAPI
 exports.orders_delete_order = (req, res, next) => {
     Order.remove({_id: req.params.orderId})
     .exec()

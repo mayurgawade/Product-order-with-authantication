@@ -2,6 +2,8 @@ const User = require('../models/user')
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
+
+// USER : to create user - postAPI
 exports.user_create_user = (req, res, next) => {
     User.find({ email: req.body.email })
     .exec()
@@ -50,6 +52,8 @@ exports.user_create_user = (req, res, next) => {
         }
     )
 }
+
+// USER : for Login user into application - postAPI
 exports.user_login = (req, res, next) => {
     User.find({ email: req.body.email})
     .exec()
@@ -96,6 +100,8 @@ exports.user_login = (req, res, next) => {
         }
     )
 }
+
+// USER : to delete user - deleteAPI
 exports.user_delete_user = (req, res, next) => {
     User.remove({_id: req.params.userId})
     .exec()
