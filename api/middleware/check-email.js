@@ -1,3 +1,4 @@
+// Middlaware to Check Email Validation
 module.exports = (req, res, next) => {
     if(validateEmail(req.body.email)){
         next();

@@ -1,6 +1,7 @@
 const Product = require('../models/products')
 const mongoose = require('mongoose');
 
+// PRODUCT : to get all the products - getAPI
 exports.product_get_all_products = (req, res, next) => {
     Product.find()
     .select('name price _id productImage')
@@ -22,7 +23,6 @@ exports.product_get_all_products = (req, res, next) => {
                     })
                     }
         res.status(200).json(result)
-        
     })
     .catch( err => {
         res.status(500).json({
@@ -30,6 +30,8 @@ exports.product_get_all_products = (req, res, next) => {
         })
     })
 }
+
+// PRODUCT : to create product - postAPI
 exports.product_create_product = (req, res, next) => {
     const product = new Product({
         _id : new mongoose.Types.ObjectId(),
@@ -57,6 +59,8 @@ exports.product_create_product = (req, res, next) => {
         });
     })
 }
+
+// PRODUCT : to get the product - getAPI
 exports.product_get_product_by_id = (req, res, next) => {
     const id = req.params.productId;
     Product.findById(id)
@@ -89,6 +93,8 @@ exports.product_get_product_by_id = (req, res, next) => {
         }
     )
 }
+
+// PRODUCT : to update products - updateAPI
 exports.product_update_product = (req, res, next) => {
     const id = req.params.productId;
     const updateOps = {};
@@ -117,6 +123,8 @@ exports.product_update_product = (req, res, next) => {
         }
     )
 }
+
+// PRODUCT : to delete the products - deleteAPI
 exports.product_delete_product = (req, res, next) => {
     const id = req.params.productId;
     Product.remove({ _id: id })
